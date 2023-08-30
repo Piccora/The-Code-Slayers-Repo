@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
 import {auth} from './firebase/Authentication'
+import CreateCourse from './pages/CreateCourse/CreateCourse';
+import Course from './pages/CourseGUI/CourseGUI';
 export default function App() {
   const [authUser,setCurrentUser]=useState(null)
   useEffect(() => {
@@ -20,9 +22,10 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={authUser?<Homepage/>:<Login/>} />
-          <Route path="/Login" element={<Login />} />
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/CreateCourse" element={<CreateCourse />} />
+          <Route path="/Course" element={<Course />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>

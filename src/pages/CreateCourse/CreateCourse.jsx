@@ -1,40 +1,60 @@
-import { Typography, Input, Select, Option, Button } from "@material-tailwind/react";
-import { NavbarDefault } from "../../components/ui/Navbar/Nav"
+import { Typography, Input, Select, Option, Button,Textarea } from "@material-tailwind/react";
 import './CreateCourse.css'
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { addCourse, storage } from "../../firebase/Database";
+import { v4 } from "uuid";
+import {ref, uploadBytes} from "firebase/storage"
 
 export function CreateCourse() {
+    const [courseName, setCourseName] = useState('')
+    const [courseDes, setCourseDes] = useState('')
+    const [category, setCategory] = useState('')
+    const [imageUpload,setImage] = useState(null)
+
     const navigate = useNavigate();
     const inputRef = useRef(null);
 
     const handleClick = () => {
         inputRef.current.click();
     };
-
+    const handleSubmit=async()=>{
+        console.log(courseName,courseDes,category,imageUpload)
+        if (imageUpload == null) return;
+        const newFileName=`${v4()+imageUpload.name}`
+        const imageRef = ref(storage, newFileName);
+        await uploadBytes(imageRef, imageUpload).then(async(snapshot) => {
+            const dr= await addCourse({'name': courseName, 'description': courseDes,'category':category ,'image': `https://storage.googleapis.com/the-code-slayers-project.appspot.com/${newFileName}`})
+            navigate({
+                pathname: "/Course",
+                search: `?id=${dr.id}`, // inject code value into template
+              });
+        });
+        
+    }
     return (
         <div className="create-course-body">
-            <NavbarDefault />
-            
             <div className="create-course-body-2">
                 <div>
                     <Typography variant="h3">Create Course</Typography>
                 </div>
                 <div className="create-course-body-2">
                     <Typography variant="h5">Name your course here</Typography>
-                    <Typography variant="h6">You can change course's name later</Typography>
-                    <div className="w-72 center-block">
-                        <Input label="Username" />
+                    <div className="w-72 center-block ">
+                        <Input label="Course name" value={courseName} onChange={ev=>setCourseName(ev.target.value)} />
                     </div>
-                    <br />
+                    <Typography variant="h6">Description</Typography>
+                    <div className="w-96 center-block">
+                        <Textarea label="Description" value={courseDes} onChange={ev=>setCourseDes(ev.target.value)} />
+                    </div>
                     <Typography variant="h5" className="create-course-body-2">Choose the category for your course</Typography>
                     <div className="w-72 center-block">
-                        <Select label="Select Version">
-                            <Option>Data Science</Option>
-                            <Option>Business</Option>
-                            <Option>Computer Science</Option>
-                            <Option>Economics</Option>
-                            <Option>Marketing</Option>
+                        <Select label="Select Version" >
+                            <Option onClick={()=>setCategory("Data Science")} >Data Science</Option>
+                            <Option onClick={()=>setCategory("Business")}>Business</Option>
+                            <Option onClick={()=>setCategory("Computer Science")}>Computer Science</Option>
+                            <Option onClick={()=>setCategory("Economics")}>Economics</Option>
+                            <Option onClick={()=>setCategory("Marketing")}>Marketing</Option>
                         </Select>
                     </div>
                     <button type="button" onClick={handleClick} className="w-24 h-24 text-center flex items-center justify-center text-sm gap-1 text-gray-500 rounded-lg bg-white border border-gray-200 shadow-sm m-auto">
@@ -44,9 +64,9 @@ export function CreateCourse() {
                         <div>
                             Upload
                         </div>
-                        <input ref={inputRef} type="file" className="hidden" multiple />
+                        <input ref={inputRef} onChange={ev=> setImage(ev.target.files[0])} type="file" className="hidden" multiple />
                     </button>
-                    <Button variant="filled" size="lg" onClick={() => navigate('/create-lessons')}>Proceed</Button>
+                    <Button variant="filled" size="lg" onClick={handleSubmit}>Proceed</Button>
                 </div>
             </div>
         </div>
