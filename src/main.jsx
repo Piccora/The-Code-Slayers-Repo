@@ -5,13 +5,14 @@ import "./assets/index.css";
 import { BrowserRouter } from "react-router-dom";
 
 import { ThemeProvider } from "@material-tailwind/react";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider>
+    <ThemeProvider>
+      <BrowserRouter>
         <App />
-      </ThemeProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+      </BrowserRouter>
+    </ThemeProvider>
+  </React.StrictMode>
 );

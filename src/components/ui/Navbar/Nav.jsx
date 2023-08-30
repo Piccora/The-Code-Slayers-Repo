@@ -9,7 +9,7 @@ import {
 import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
 import './Nav.css'
  
-export function NavbarDefault() {
+export default function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
  
   React.useEffect(() => {
