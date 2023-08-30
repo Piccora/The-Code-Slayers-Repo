@@ -2,6 +2,7 @@ import Layout from './components/ui/Layout'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Homepage from './pages/Homepage/Homepage'
+import CreateLessons from './pages/CreateLessons/CreateLessons'
 import { Routes, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/test" element={<CreateLessons />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>

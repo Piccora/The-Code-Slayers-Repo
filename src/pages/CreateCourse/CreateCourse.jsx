@@ -13,9 +13,7 @@ export function CreateCourse() {
     };
 
     return (
-        <div className="create-course-body">
-            <NavbarDefault />
-            
+        <div className="create-course-body">          
             <div className="create-course-body-2">
                 <div>
                     <Typography variant="h3">Create Course</Typography>
