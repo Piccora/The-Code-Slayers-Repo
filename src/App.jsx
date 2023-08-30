@@ -1,5 +1,10 @@
+// import { Routes, Route } from 'react-router-dom';
+import Homepage from './pages/Homepage/Homepage';
+
 export default function App() {
   return (
-    <h1>App</h1>
+    <>
+    <Homepage />
+    </>
   );
 }
