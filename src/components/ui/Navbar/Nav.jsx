@@ -6,6 +6,7 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
+import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
  
 export function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -65,13 +66,7 @@ export function NavbarDefault() {
   return (
     <Navbar className="mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="#"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
-        >
-          Material Tailwind
-        </Typography>
+      <img src={WebsiteLogo} className="nav-logo"/>
         <div className="hidden lg:block">{navList}</div>
         <Button variant="gradient" size="sm" className="hidden lg:inline-block">
           <span>Buy Now</span>
