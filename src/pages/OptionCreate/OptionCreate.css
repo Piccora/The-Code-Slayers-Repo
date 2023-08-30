@@ -1,0 +1,13 @@
+.option-create {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.option-create-title {
+    text-align: center;
+}
+
+.option-create-body {
+    padding: 10% 0 0 0;
+}

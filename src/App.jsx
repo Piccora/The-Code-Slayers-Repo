@@ -3,7 +3,6 @@ import Login from './pages/Login/Login'
 import Homepage from './pages/Homepage/Homepage'
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
-// import {auth} from './firebase/Authentication';
 export default function App() {
   useEffect(()=>{
     console.log("Welcome")
