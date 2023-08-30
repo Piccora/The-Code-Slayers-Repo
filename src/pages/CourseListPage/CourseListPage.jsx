@@ -1,5 +1,6 @@
 import { CardDefault } from "../../components/ui/card"; 
 
+
 export function CoursesList() {
     return(
         <div>
