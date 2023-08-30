@@ -1,12 +1,18 @@
 import { Input, Typography, Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { signIn } from "../../firebase/Authentication";
 
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate();
     const handleSubmit = () => {
-        console.log(email, password)
+        signIn(email, password)
+        navigate("/Homepage")
+    }
+    const redirect = () =>{
+        navigate("/Register")
     }
     return (
         <div className="w-fit m-auto mt-6">
@@ -35,10 +41,10 @@ function Login() {
                 </Typography>
             </div>
             <div className="flex space-x-4">
-                <Button color="green" type="submit" className="mt-6" fullWidth>
+                <Button color="green" type="button" className="mt-6" fullWidth onClick={redirect}>
                     Register now
                 </Button>
-                <Button type="submit" className="mt-6" fullWidth onClick={handleSubmit}>
+                <Button type="button" className="mt-6" fullWidth onClick={handleSubmit}>
                     Log in
                 </Button>
             </div>

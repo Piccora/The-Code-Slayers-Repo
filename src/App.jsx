@@ -1,20 +1,29 @@
 import Layout from './components/ui/Layout'
 import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 import Homepage from './pages/Homepage/Homepage'
 import { Routes, Route } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from '@firebase/auth';
+import {auth} from './firebase/Authentication'
 export default function App() {
-  useEffect(()=>{
-    console.log("Welcome")
-  },[])
+  const [authUser,setCurrentUser]=useState(null)
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+     })
+  }, [])
+  
   return (
     <>
       <Layout>
         <Routes>
-          <Route path="/" element={<Login />}>
-            <Route path="Login" element={<Homepage />} />
-            <Route path="*" element={<NoMatch />} />
-          </Route>
+          <Route path="/" element={authUser?<Homepage/>:<Login/>} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Homepage" element={<Homepage />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>
     </>
