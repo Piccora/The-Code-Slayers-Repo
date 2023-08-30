@@ -1,20 +1,43 @@
-import { Routes, Route } from 'react-router-dom';
-import Homepage from './pages/Homepage/Homepage';
-import OptionCreate from './pages/OptionCreate/OptionCreate';
-import { NavbarDefault } from './components/ui/Navbar/Nav';
-import { CoursesList } from './pages/CourseListPage/CourseListPage'
-import { Course } from './pages/Course/Course'
-
+import Layout from './components/ui/Layout'
+import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
+import Homepage from './pages/Homepage/Homepage'
+import CreateLessons from './pages/CreateLessons/CreateLessons'
+import { Routes, Route } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from '@firebase/auth';
+import {auth} from './firebase/Authentication'
 export default function App() {
+  const [authUser,setCurrentUser]=useState(null)
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user)
+     })
+  }, [])
+  
   return (
     <>
-    <Routes>
-      <Route path="/" element={ <Homepage />} />
-      <Route path="/nav" element={ <NavbarDefault />} />
-      <Route path="/opt" element={ <OptionCreate />} />
-      <Route path="/CoursesList" element={ <CoursesList />} />
-      <Route path="/Course" element={ <Course/>} />
-    </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={authUser?<Homepage/>:<Login/>} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Homepage" element={<Homepage />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/test" element={<CreateLessons />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </Layout>
     </>
+  );
+}
+function NoMatch() {
+  return (
+    <div>
+      <h2>Nothing to see here!</h2>
+      <p>
+        <Link to="/">Go to the home page</Link>
+      </p>
+    </div>
   );
 }
