@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
  
-export function NavbarDefault() {
+export default function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
  
   React.useEffect(() => {
