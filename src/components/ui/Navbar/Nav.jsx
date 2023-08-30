@@ -7,6 +7,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
+import './Nav.css'
  
 export function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
