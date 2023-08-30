@@ -1,6 +1,8 @@
+import { CardDefault } from '../../components/ui/CardDefault';
+
 export function OptionCreate() {
     return(
-        <h1>OptionCreate</h1>
+        <CardDefault title="Courses" content="Click here to create courses" />
     )
 }
 

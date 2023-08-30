@@ -1,5 +1,11 @@
+import OptionCreate from './pages/OptionCreate/OptionCreate';
+import { NavbarDefault } from './components/ui/Nav';
+
 export default function App() {
   return (
-    <h1>App</h1>
+    <>
+    <NavbarDefault />
+    <OptionCreate />
+    </>
   );
 }
