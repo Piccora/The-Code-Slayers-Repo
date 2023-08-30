@@ -1,11 +1,12 @@
-import OptionCreate from './pages/OptionCreate/OptionCreate';
-import { NavbarDefault } from './components/ui/Nav';
-
+import Layout from './components/ui/Layout'
+import { useState } from 'react';
 export default function App() {
+  const [currentUser, setCurrentUser] = useState(null)
   return (
     <>
-    <NavbarDefault />
-    <OptionCreate />
+    <Layout>
+
+    </Layout>
     </>
   );
 }
