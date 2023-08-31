@@ -1,27 +1,27 @@
-import { CardDefault } from "../../components/ui/card";
-import { getAllCourses } from "../../firebase/Database";
+import { CardWithLink } from "../../components/ui/CardWithLink";
+import { getAllEvents } from "../../firebase/Database";
 import { useState,useEffect } from "react";
 
 export function EventList() {
-    const [courses, setCourses] = useState([])
+    const [events, setEvents] = useState([])
     useEffect(() => {
-        getAllCourses().then(courses => {
-            setCourses(courses)
+        getAllEvents().then(events => {
+            setEvents(events)
         })
     }, [])
     return (
         <div>
             <div className="h-screen items-center flex justify-center overflow-x-hidden">
-                <h1 className="text-8xl absolute">Courses</h1>
+                <h1 className="text-8xl absolute">Events</h1>
             </div>
             <div className="grid grid-cols-3 w-full left-12 relative gap-y-12">
                 {/* <CardDefault />
                 <CardDefault />
                 <CardDefault /> */}
                 {
-                    courses.length > 0 && courses.map((course, index) => {
+                    events.length > 0 && events.map((event, index) => {
                         return(
-                        <CardDefault key={index} prop={course} />
+                        <CardWithLink key={index} prop={event} />
                         )
                     })
                 }
