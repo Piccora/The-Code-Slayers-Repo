@@ -7,6 +7,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
+import { Link } from "react-router-dom";
 import './Nav.css'
  
 export function NavbarDefault() {
@@ -27,9 +28,9 @@ export function NavbarDefault() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link href="#" className="flex items-center">
           Pages
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -37,9 +38,9 @@ export function NavbarDefault() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link href="#" className="flex items-center">
           Account
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -47,9 +48,9 @@ export function NavbarDefault() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link href="#" className="flex items-center">
           Blocks
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -57,9 +58,9 @@ export function NavbarDefault() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link href="#" className="flex items-center">
           Docs
-        </a>
+        </Link>
       </Typography>
     </ul>
   );

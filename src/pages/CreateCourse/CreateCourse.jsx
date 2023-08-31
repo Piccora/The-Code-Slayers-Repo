@@ -24,7 +24,7 @@ export function CreateCourse() {
         const newFileName=`${v4()+imageUpload.name}`
         const imageRef = ref(storage, newFileName);
         await uploadBytes(imageRef, imageUpload).then(async(snapshot) => {
-            const dr= await addCourse({'name': courseName, 'description': courseDes,'category':category ,'image': `https://storage.googleapis.com/the-code-slayers-project.appspot.com/${newFileName}`})
+            const dr= await addCourse({'name': courseName, 'description': courseDes,'category':category ,'image': `https://storage.googleapis.com/the-code-slayers-project.appspot.com/${newFileName}`,'lessons':[]})
             navigate({
                 pathname: "/Course",
                 search: `?id=${dr.id}`, // inject code value into template

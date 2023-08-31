@@ -14,8 +14,6 @@ import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
 import {auth} from './firebase/Authentication'
 import CreateCourse from './pages/CreateCourse/CreateCourse';
-import CourseGUI from './pages/CourseGUI/CourseGUI';
-import { Course } from "./pages/Course/Course"
 
 export default function App() {
   const [authUser,setCurrentUser]=useState(null)
@@ -33,6 +31,7 @@ export default function App() {
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/CreateCourse" element={<CreateCourse />} />
+          <Route path="/CoursesList" element={<CoursesList />} />
           <Route path="/Course" element={<Course />} />
           <Route path="/test" element={<Payment />} />
           <Route path="*" element={<NoMatch />} />
