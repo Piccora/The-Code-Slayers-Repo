@@ -62,9 +62,9 @@ export function CreateLessons(course) {
                         </Typography>
                         <Textarea required label="Description" value={description} onChange={ev=>setDescription(ev.target.value)} />
                         <Typography variant="h4" color="black">
-                            Add a video link
+                            Add an embed video link
                         </Typography>
-                        <Input required label="Video link" size="lg" value={url} onChange={ev=>setURL(ev.target.value)}/>
+                        <Input required label="Embed Video link" size="lg" value={url} onChange={ev=>setURL(ev.target.value)}/>
                     </CardBody>
                     <CardFooter className="pt-0">
                         <Button variant="gradient" onClick={handleSubmit} fullWidth>
