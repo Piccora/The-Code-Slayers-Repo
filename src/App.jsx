@@ -4,9 +4,9 @@ import Register from './pages/Register/Register'
 import Homepage from './pages/Homepage/Homepage'
 import CreateLessons from './pages/CreateLessons/CreateLessons'
 import CoursesList from './pages/CourseListPage/CourseListPage'
-import Course from './pages/Course/Course'
 import CreateEventUserPrompt from './pages/CreateEventUserPrompt/CreateEventUserPrompt'
 import { CreateEvent } from './pages/CreateEvent/CreateEvent'
+import { Profile } from './pages/Profile/Profile'
 import { Routes, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -32,6 +32,7 @@ export default function App() {
           <Route path="/CreateCourse" element={<CreateCourse />} />
           <Route path="/CoursesList" element={<CoursesList />} />
           <Route path="/Course" element={<Course />} />
+          <Route path="/test" element={<Profile />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>
