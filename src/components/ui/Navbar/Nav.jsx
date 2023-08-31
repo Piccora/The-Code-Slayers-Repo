@@ -9,7 +9,7 @@ import {
 import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
 import './Nav.css'
  
-export default function NavbarDefault() {
+export function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
  
   React.useEffect(() => {
@@ -121,3 +121,5 @@ export default function NavbarDefault() {
     </Navbar>
   );
 }
+
+export default NavbarDefault;

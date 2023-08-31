@@ -1,47 +1,68 @@
-import { Typography, Input, Select, Option, Button } from "@material-tailwind/react";
-import { NavbarDefault } from "../../components/ui/Navbar/Nav"
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+// import { LessonForm } from "../../components/form/LessonForm/LessonForm"
+import React from "react";
+import {
+    Button,
+    Dialog,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,
+    Input,
+    Textarea,
+} from "@material-tailwind/react";
 
 export function CreateLessons() {
     const navigate = useNavigate();
-    const inputRef = useRef(null);
-
-    const handleClick = () => {
-        inputRef.current.click();
-    };
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen((cur) => !cur);
 
     return (
-        <div>
-            <NavbarDefault />
-            <div className="flex w-max gap-4 m-10px">
-                <Button color="blue" variant="filled" size="lg">color blue</Button>
-            </div>
-            <div className="">
-                <div>
-                    <Typography variant="h3" className="">Create Lesson</Typography>
-                </div>
-                <div className="create-course-body-2">
-                    <Typography variant="h5">Name your course here</Typography>
-                    <Typography variant="h6">You can change course's name later</Typography>
-                    <div className="w-72 center-block">
-                        <Input label="Username" />
-                    </div>
-                    <br />
-                    <Typography variant="h5" className="create-course-body-2">Choose the category for your course</Typography>
-                    <button type="button" onClick={handleClick} className="w-24 h-24 text-center flex items-center justify-center text-sm gap-1 text-gray-500 rounded-lg bg-white border border-gray-200 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
-                    </svg>
-                    <div>
-                        Upload
-                    </div>
-                    <input ref={inputRef} type="file" className="hidden" multiple />
-                    </button>
-                    <Button variant="filled" size="lg" onClick={() => navigate('/create-lessons')}>Proceed</Button>
+        <>
+            <div>
+                <div className="flex w-max gap-4 m-11">
+                    <Button color="blue" variant="filled" size="lg" onClick={handleOpen}>New lesson</Button>
                 </div>
             </div>
-        </div>
+            <Dialog
+                size="xs"
+                open={open}
+                handler={handleOpen}
+                className="bg-transparent shadow-none"
+            >
+                <Card className="mx-auto w-full max-w-[24rem]">
+                    <CardHeader
+                        variant="gradient"
+                        color="blue"
+                        className="mb-4 grid h-28 place-items-center"
+                    >
+                        <Typography variant="h3" color="white">
+                            Edit lesson
+                        </Typography>
+                    </CardHeader>
+                    <CardBody className="flex flex-col gap-4">
+                        <Typography variant="h4" color="black">
+                            Write a title for the lesson
+                        </Typography>
+                        <Input label="Enter course name" size="lg" />
+                        <Typography variant="h4" color="black">
+                            Write a description for the lesson
+                        </Typography>
+                        <Textarea label="Description" />
+                        <Typography variant="h4" color="black">
+                            Add a video link
+                        </Typography>
+                        <Input label="Video link" size="lg" />
+                    </CardBody>
+                    <CardFooter className="pt-0">
+                        <Button variant="gradient" onClick={handleOpen} fullWidth>
+                            Confirm
+                        </Button>
+                    </CardFooter>
+                </Card>
+            </Dialog>
+        </>
     )
 }
 

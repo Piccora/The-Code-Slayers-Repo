@@ -2,13 +2,16 @@ import Layout from './components/ui/Layout'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Homepage from './pages/Homepage/Homepage'
+import CreateLessons from './pages/CreateLessons/CreateLessons'
 import { Routes, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
 import {auth} from './firebase/Authentication'
 import CreateCourse from './pages/CreateCourse/CreateCourse';
-import Course from './pages/CourseGUI/CourseGUI';
+import CourseGUI from './pages/CourseGUI/CourseGUI';
+import { Course } from "./pages/Course/Course"
+
 export default function App() {
   const [authUser,setCurrentUser]=useState(null)
   useEffect(() => {
@@ -26,6 +29,7 @@ export default function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/CreateCourse" element={<CreateCourse />} />
           <Route path="/Course" element={<Course />} />
+          <Route path="/test" element={<CourseGUI />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>
