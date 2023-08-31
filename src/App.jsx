@@ -33,7 +33,7 @@ export default function App() {
           <Route path="/CreateCourse" element={<CreateCourse />} />
           <Route path="/CoursesList" element={<CoursesList />} />
           <Route path="/Course" element={<Course />} />
-          <Route path="/test" element={<Payment />} />
+          <Route path="/test" element={<Profile />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>
