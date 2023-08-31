@@ -4,7 +4,7 @@ import Register from './pages/Register/Register'
 import Homepage from './pages/Homepage/Homepage'
 import Course from './pages/Course/Course'
 import CoursesList from './pages/CourseListPage/CourseListPage'
-import CreateEventUserPrompt from './pages/CreateEventUserPrompt/CreateEventUserPrompt'
+import EventList from './pages/EventListPage/EventListPage'
 import { Payment } from './pages/Payment/Payment'
 import { CreateEvent } from './pages/CreateEvent/CreateEvent'
 import { Profile } from './pages/Profile/Profile'
@@ -31,9 +31,13 @@ export default function App() {
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/CreateCourse" element={<CreateCourse />} />
+          <Route path="/CreateEvent" element={<CreateEvent />} />
           <Route path="/CoursesList" element={<CoursesList />} />
+          <Route path="/EventsList" element={<CoursesList />} />
           <Route path="/Course" element={<Course />} />
-          <Route path="/test" element={<Profile />} />
+          <Route path="/Events" element={<EventList />} />
+          <Route path="/Payment" element={<Payment />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>

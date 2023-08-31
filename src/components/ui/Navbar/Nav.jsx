@@ -50,9 +50,36 @@ export function NavbarDefault() {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
-        onClick={()=>redirect('/Homepage')}
+        onClick={()=>redirect('/CreateCourse')}
       >
-          Workshops
+          Create Course
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+        onClick={()=>redirect('/CreateEvent')}
+      >
+          Create event
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+        onClick={()=>redirect('/Profile')}
+      >
+          Profile
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-normal"
+        onClick={()=>redirect('/Events')}
+      >
+          Events
       </Typography>
     </ul>
   );

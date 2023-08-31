@@ -50,9 +50,10 @@ export function Course() {
                             course.lessons.map((lesson,index) => {
                                 return (
                                     <Accordion open={open === index} animate={CUSTOM_ANIMATION} className="text-2xl relative left-96 top-8">
-                                        <AccordionHeader onClick={() => handleOpen(index)}>{lesson.name}</AccordionHeader>
+                                        <AccordionHeader onClick={() => handleOpen(index)}>{index+1 +'. '+ lesson.name}</AccordionHeader>
                                         <AccordionBody>
                                             {lesson.description}
+                                            <iframe width="560" height="315" src={lesson.url} title="YouTube video player" frameborder="0" className=" border" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                         </AccordionBody>
                                     </Accordion>
                                     )

@@ -14,25 +14,29 @@ export function Profile() {
         },
         {
             name: "Birth date",
-            job: "xxxxxxx",
+            job: "1/3/2000",
         },
         {
             name: "Gender",
-            job: "xxxxxxx",
+            job: "male",
         },
         {
             name: "Email",
-            job: "xxxxxxx",
+            job: "johndoe@gmail.com",
         },
         {
             name: "Phone number",
-            job: "xxxxxxx",
+            job: "038432121321",
+        },
+        {
+            name: "Currency balance",
+            job: "100",
         },
     ];
     const TABLE_ROWS_2 = [
         {
-            name: "",
-            job: "",
+            name: "how to code",
+            job: "how to use chatgtp to code",
         },
         {
             name: "",
@@ -51,7 +55,7 @@ export function Profile() {
     return (
         <div className="profile">
             <Avatar src={ProfilePicture} alt="avatar" />
-            <Typography variant="h3">Name</Typography>
+            <Typography variant="h3">{TABLE_ROWS[0].job}</Typography>
             <br />
             <br />
             <Typography variant="h3">Personal Information</Typography>
