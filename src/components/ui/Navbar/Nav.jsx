@@ -7,18 +7,22 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import WebsiteLogo from '../../../assets/images/WebsiteLogo.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Nav.css'
  
 export function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
- 
+  const navigate = useNavigate()
   React.useEffect(() => {
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false),
     );
   }, []);
+  const redirect = (path)=>{
+    navigate(path); 
+  }
+
  
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -27,40 +31,28 @@ export function NavbarDefault() {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={()=>redirect('/Homepage')}
       >
-        <Link href="#" className="flex items-center">
-          Pages
-        </Link>
+          Homepage
       </Typography>
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={()=>redirect('/CoursesList')}
+
       >
-        <Link href="#" className="flex items-center">
-          Account
-        </Link>
+          Courses
       </Typography>
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={()=>redirect('/Homepage')}
       >
-        <Link href="#" className="flex items-center">
-          Blocks
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link href="#" className="flex items-center">
-          Docs
-        </Link>
+          Workshops
       </Typography>
     </ul>
   );
@@ -70,7 +62,7 @@ export function NavbarDefault() {
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
       <img src={WebsiteLogo} className="nav-logo"/>
         <div className="hidden lg:block">{navList}</div>
-        <Button variant="gradient" size="sm" className="hidden lg:inline-block">
+        <Button variant="gradient" size="sm" className="hidden lg:inline-block" onClick={()=>redirect('/Payment')}>
           <span>Buy Now</span>
         </Button>
         <IconButton
@@ -114,7 +106,7 @@ export function NavbarDefault() {
       <MobileNav open={openNav}>
         <div className="container mx-auto">
           {navList}
-          <Button variant="gradient" size="sm" fullWidth className="mb-2">
+          <Button variant="gradient" size="sm" fullWidth className="mb-2" onClick={()=>redirect('/Payment')}>
             <span>Buy Now</span>
           </Button>
         </div>
