@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
-// import { LessonForm } from "../../components/form/LessonForm/LessonForm"
-import React from "react";
+import React,{useState} from "react";
+import { setLesson } from "../../firebase/Database";
 import {
     Button,
     Dialog,
@@ -12,16 +11,28 @@ import {
     Input,
     Textarea,
 } from "@material-tailwind/react";
+import { useSearchParams } from "react-router-dom";
 
-export function CreateLessons() {
-    const navigate = useNavigate();
-    const [open, setOpen] = React.useState(false);
+export function CreateLessons(course) {
+    const [open, setOpen] = useState(false);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [url, setURL] = useState('');
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
+
     const handleOpen = () => setOpen((cur) => !cur);
-
+    const handleSubmit=()=>{
+        console.log(id,name)
+        const data={name:name, description:description, url:url};
+        const newLessons = [...course.course.lessons,data]
+        setLesson(id,{'lessons':newLessons})
+        handleOpen()
+    }
     return (
         <>
             <div>
-                <div className="flex w-max gap-4 m-11">
+                <div className="flex w-max gap-4 m-11 ml-24">
                     <Button color="blue" variant="filled" size="lg" onClick={handleOpen}>New lesson</Button>
                 </div>
             </div>
@@ -45,18 +56,18 @@ export function CreateLessons() {
                         <Typography variant="h4" color="black">
                             Write a title for the lesson
                         </Typography>
-                        <Input label="Enter course name" size="lg" />
+                        <Input required label="Enter course name" size="lg" value={name} onChange={ev=>setName(ev.target.value)} />
                         <Typography variant="h4" color="black">
                             Write a description for the lesson
                         </Typography>
-                        <Textarea label="Description" />
+                        <Textarea required label="Description" value={description} onChange={ev=>setDescription(ev.target.value)} />
                         <Typography variant="h4" color="black">
                             Add a video link
                         </Typography>
-                        <Input label="Video link" size="lg" />
+                        <Input required label="Video link" size="lg" value={url} onChange={ev=>setURL(ev.target.value)}/>
                     </CardBody>
                     <CardFooter className="pt-0">
-                        <Button variant="gradient" onClick={handleOpen} fullWidth>
+                        <Button variant="gradient" onClick={handleSubmit} fullWidth>
                             Confirm
                         </Button>
                     </CardFooter>

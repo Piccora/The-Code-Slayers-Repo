@@ -7,14 +7,13 @@ export function Homepage() {
     const navigate = useNavigate();
 
     const navigateCourseList = () => {
-        navigate("/Course");
+        navigate("/CoursesList");
     };
 
 
     return(
         <div>
             <div className="h-screen items-center flex justify-center overflow-x-hidden">
-                <div className="bg-cyan-100 h-4/5 w-full absolute top-0 "></div>
                 <h1 className="text-8xl absolute">Homepage</h1>
             </div>
             <h3 className="text-6xl left-32 relative w-0 bottom-20">Courses</h3>

@@ -1,16 +1,30 @@
-import { getFirestore,collection, addDoc,doc, getDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import firebase from "./init";
-import { async } from "@firebase/util";
 
 const db = getFirestore(firebase)
 export const storage = getStorage(firebase);
 
-export const addCourse=(data)=>{
-   return addDoc(collection(db, "courses"), data)
+export const addCourse = (data) => {
+    return addDoc(collection(db, "courses"), data)
 }
-export const getCourse=async(id)=>{
+export const getCourse = async (id) => {
     const DocSnap = await getDoc(doc(db, "courses", id))
     return DocSnap.data()
+}
+export const setLesson = async (id, data) => {
+    await updateDoc(doc(db, "courses", `${id}`), data)
+}
+export const getAllCourses = async() => {
+    const querySnapshot = await getDocs(collection(db, "courses"));
+    let list = []
+    querySnapshot.forEach((doc) => {
+        let data={
+            _id:doc.id,
+          ...doc.data()
+        }
+        list.push(data);
+    });
+    return list
 }
 console.log(storage)
