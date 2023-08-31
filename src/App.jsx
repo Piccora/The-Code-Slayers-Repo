@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage/Homepage'
 import CreateLessons from './pages/CreateLessons/CreateLessons'
 import CoursesList from './pages/CourseListPage/CourseListPage'
 import CreateEventUserPrompt from './pages/CreateEventUserPrompt/CreateEventUserPrompt'
+import { Payment } from './pages/Payment/Payment'
 import { CreateEvent } from './pages/CreateEvent/CreateEvent'
 import { Profile } from './pages/Profile/Profile'
 import { Routes, Route } from "react-router-dom";
@@ -33,7 +34,7 @@ export default function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/CreateCourse" element={<CreateCourse />} />
           <Route path="/Course" element={<Course />} />
-          <Route path="/test" element={<Profile />} />
+          <Route path="/test" element={<Payment />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>
