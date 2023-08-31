@@ -12,6 +12,10 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
 import {auth} from './firebase/Authentication'
+import CreateCourse from './pages/CreateCourse/CreateCourse';
+import CourseGUI from './pages/CourseGUI/CourseGUI';
+import { Course } from "./pages/Course/Course"
+
 export default function App() {
   const [authUser,setCurrentUser]=useState(null)
   useEffect(() => {
@@ -25,10 +29,11 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={authUser?<Homepage/>:<Login/>} />
-          <Route path="/Login" element={<Login />} />
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/test" element={<CreateEventUserPrompt />} />
+          <Route path="/CreateCourse" element={<CreateCourse />} />
+          <Route path="/Course" element={<Course />} />
+          <Route path="/test" element={<CourseGUI />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Layout>
